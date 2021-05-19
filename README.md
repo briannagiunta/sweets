@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Sweet-A-Holics
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+---
+A local bakery website that specializes in cinnamon rolls and other sweets. Works like an e-commerce site where users can place orders on a number of sweets and can view details on each one.
 
-In the project directory, you can run:
 
-### `yarn start`
+## User Stories
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
+1. The user arrives on the home page which contains aesthetics and a welcome message with links to login/signup
+2. The user can either login or signup, entering the pertinent information, which will then take them to the main Sweetaholics product page.
+3. The product page shows all the sweets available to purchase, with information such as the name, price, and a picture. 
+4. Since this is the logged-in state, the user has options to go back to the home page, access their existing cart, look at a list of past orders, as well as logout, which will bring them back to the home page.
+5. When a user clicks on a particular bakery item, they're taken to that particular item page with a bit more info like a description.
+6. Users can add treats to their cart from this page and can even click additional times to continue adding the same item to the cart.
+7. The My Cart page will have a running list of all the items the user bought which contains the grand total, as well as a checkout button.
+8. Users can also delete items from their cart on this page.
+9. Checking out from this screen takes the user to a payment info screen, and once everything is finalized, the order is made and the user is sent to the My Orders page.
+10. While this page is also accesible from other pages, this screen shows every order the user has made, with an appropriate date.
+11. When the user clicks this date, they will see a full receipt and all the info they entered when they made this purchase. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ 
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Wireframes & ERD
 
-### `yarn build`
+---
+![ERD](./ERD.png)
+![Wireframe](./Untitled.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Routes Inventory
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| Route       | Description |
+| ----------- | ----------- |
+| POST /users/signup | add a new user to users table |
+| POST /users/login  | send info to back to check password and send user info to the front |
+| GET /users/verify | get user info to display profile | 
+| POST cart/add | create a cart and add it to user | 
+| POST cart/items | add items to cart | 
+| POST cart/empty | empty cart | 
+| GET /items | get all items | 
+| GET /items/:id | get single item |
+| GET /orders | get all orders |
+| POST order/add | create an order and add it to user | 
+| POST order/items | add items to order | 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## MVP Checklist
 
-### Code Splitting
+---
+- Login/Logout functionality
+    - JWT and hashing
+- Nav Bar and page switching/hiding (Routes/Redirects)
+- Product database entry/seeding
+- Cart functionality (add/remove)
+    - Order functionality
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Stretch Goals
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+- Add a quantity for each item, so they have the potential to "run out" and not be available.
+- Add admin user capability, so they see certain pages like "Manage Products" and "Orders to Fill"
+    - Manage Products: List of products where admin can adjust the quantity
+        - Bonus: Admins can add, edit, and delete products
+    - Orders to Fill: Admins can convert orders from "pending" to "shipped"
